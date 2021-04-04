@@ -126,7 +126,7 @@ function pasarUsuarioAPremium(usuarios) {
   // Devuelve el array de usuarios
   // Tu código:
   for (var i = 0; i < usuarios.length; i++){
-    usuarios[i].usuario.esPremium = true;
+    usuarios[i]['esPremium'] = true;
   }
   return usuarios;
 
@@ -139,6 +139,11 @@ function sumarLikesDeUsuario(usuario) {
   // Suma todos los likes de todos los objetos "post"
   // Devuelve la suma
   // Tu código:
+  var sumaDeLikes = 0;
+  for(var i = 0; i < usuario.posts.length; i++){
+    sumaDeLikes += usuario.posts[i]['likes'];
+    }
+  return sumaDeLikes;
 }
 
 function agregarMetodoCalculoDescuento(producto) {
@@ -152,7 +157,7 @@ function agregarMetodoCalculoDescuento(producto) {
   // producto.calcularPrecioDescuento() -> 20 - (20 * 0.2)
   // Tu código:
   producto['calcularPrecioDescuento'] = function (){
-    var precioConDescuento = producto[precio] - (producto[precio] * producto[porcentajeDeDescuento]);
+    var precioConDescuento = producto['precio'] - (producto['precio'] * producto['porcentajeDeDescuento']);
     return precioConDescuento;
   }
   return producto;
