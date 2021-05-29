@@ -11,16 +11,10 @@ function deObjetoAmatriz(objeto){
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
   //Opcion 1
-  const matriz = []
-  const atributo = []
-  const valor = []
-    for (const clave in objeto) {
-      valor.push(clave)
-      atributo.push(objeto[clave])
-    }
-    for(var i = 0; i<valor.length; i++){
-      matriz.push([valor[i], atributo[i]])
-    }
+  const matriz = [];
+  for (const clave in objeto) {
+    matriz.push([clave, objeto[clave]])
+  }
   return matriz;
   //Opcion 2
   //return Object.entries(objeto);
@@ -32,19 +26,9 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
-  const objetoCadena = {}
-  for(var i = 0; i<=string.length - 1; i++){
-    var contador = 0;
-    if(!objetoCadena[string[i]]){
-      for(var j = 0; j<=string.length; j++){
-        if(string[i]===string[j]){
-          contador++
-        }
-      }
-      objetoCadena[string[i]] = contador;
-    }
-  }
-  return objetoCadena;
+  return [...string].reduce((contadorLetra, letra) => 
+      {contadorLetra[letra] = (contadorLetra[letra] || 0) + 1;
+      return contadorLetra;}, {});
 }
 
 
